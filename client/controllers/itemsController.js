@@ -4,7 +4,6 @@ app.controller('itemsController', ["$scope", "usersFactory", "itemsFactory", '$l
     $scope.checkUser = function () {
         usersFactory.checkUser(function (data) {
             $scope.curUser = data;
-            console.log(data);
         })
     };
 
