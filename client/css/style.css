@@ -1,6 +1,54 @@
-/**{
-    outline: 1px dotted grey;
-}*/
+*{
+    /*outline: 1px dotted grey;*/
+    font-style: Sans-serif;
+}
+
+#header{
+    height: 10%;
+    background-color: #C5D9E2;
+    padding: 20px;
+    position: relative;
+    border-radius: 3px;
+}
+
+#headerbox{
+    position: absolute;
+    right: 5%;
+    text-align: right;
+}
+
+#quote{
+    text-align: center;
+    padding:30px;
+}
+
+.center{
+    margin: auto;
+}
+
+.inline{
+    display: inline-block;
+}
+
+.red{
+    color:red;
+}
+
+button{
+    background-color: #817F75;
+    color:white;
+    border-radius: 3px;
+    border: 1px solid #817F75;
+}
+
+button:hover{
+    background-color: white;
+    color: #817F75;
+}
+
+a{
+    text-decoration: none;
+}
 
 ul{
    list-style: none; 

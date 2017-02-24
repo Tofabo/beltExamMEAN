@@ -22,6 +22,7 @@ app.controller('itemsController', ["$scope", "usersFactory", "itemsFactory", '$l
 
     $scope.add = function (newItem, owner) {
         $scope.errors = [];
+        //frontend validations
         if (!$scope.newItem || !$scope.newItem.title || !$scope.newItem.description) {
             $scope.errors.push('All fields required.');
         }
@@ -32,8 +33,8 @@ app.controller('itemsController', ["$scope", "usersFactory", "itemsFactory", '$l
             $scope.errors.push('Description must be at least 10 characters long.');
         }
         else {
+            //if input info passes all validations send to factory
             itemsFactory.add(newItem, owner, function () {
-                //dont use this data, this about cleaning this up
                 $scope.newItem = {};
                 $scope.checkUser();
             });

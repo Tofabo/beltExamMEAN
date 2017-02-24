@@ -5,7 +5,9 @@ var Item = mongoose.model('Item');
 module.exports = (function () {
     return {
         add: function (req, res) {
+            //find user who created item
             User.findOne({ _id: req.body._owner }, function (err, user) {
+                //create item schema, push to user items and save both
                 var item = new Item(req.body);
                 item.save(function (err) {
                     user.items.push(item);
@@ -13,32 +15,35 @@ module.exports = (function () {
                         if(err){
                              return res.json({ error: "Something went wrong. Please try again!", status: false });
                         }
+                        //if user has tagged a friend, find that friend and save item to their items array
                         else if (item.taggeduser) {
                             User.findOne({ _id: item.taggeduser }, function (err, user2) {
                                 user2.items.push(item);
                                 user2.save(function (err) {
                                     if (err) {
-                                        return res.json({ error: "Something went wrong. Please try again!", status: false })
+                                        return res.json({ error: "Something went wrong. Please try again!", status: false });
                                     } else {
-                                        res.redirect('/'); //think abour redirect here
-                                        // res.json({status:true});
+                                        res.redirect('/'); 
                                     }
                                 })
                             })
                         }
+                        //if no tagged user
                         else{
                                 res.redirect('/');
-                                //  res.json({ status: true }) //think abour redirect here
                         }
                     })
                 })
             })
         },
         changestatus: function (req, res) {
+            //find item
             Item.findOne({ _id: req.body.id }, function (err, item) {
                 if (err) {
-                    return res.json({ error: "Something went wrong. Please try again!", status: false })
-                } else {
+                    return res.json({ error: "Something went wrong. Please try again!", status: false });
+                }
+                //change status and save
+                else {
                     if (item.status == "unchecked") {
                         item.status = "checked";
                     }
@@ -54,7 +59,6 @@ module.exports = (function () {
                     })
                 }
             })
-
         }
     }
 })()

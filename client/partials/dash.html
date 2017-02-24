@@ -1,7 +1,11 @@
-<h1>Dash</h1>
-<a href="/logout">Logout</a>
-<h3>Welcome {{ curUser.name }}!</h3>
-<p><i>What do you want to do with your life?</i></p>
+<div id="header">
+    <h1 class="inline">Hash(key) % hash.length List</h1>
+    <div id="headerbox" class="inline">
+    <h3>Welcome {{ curUser.name }}!</h3><a href="/logout"><button>Logout</button></a></div>
+    
+</div>
+
+<h2 id="quote" class="center"><i>What will you do with your life?</i><h2>
 
 <p ng-repeat="error in errors track by $index" class="red">{{ error }}</p>
 
