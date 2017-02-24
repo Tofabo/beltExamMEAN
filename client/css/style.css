@@ -1,0 +1,19 @@
+/**{
+    outline: 1px dotted grey;
+}*/
+
+ul{
+   list-style: none; 
+}
+
+input{
+    vertical-align: top;
+}
+
+select{
+    vertical-align: top;
+}
+
+label{
+    vertical-align: top;
+}

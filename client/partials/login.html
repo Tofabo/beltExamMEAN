@@ -3,6 +3,6 @@
 <p ng-repeat="error in errors track by $index" class="red">{{ error }}</p>
 
 <form ng-submit="login()">
-    Name <input ng-model="user.name" type="text" placeholder="Enter Name">
+    <label>Name <input ng-model="user.name" type="text" placeholder="Enter Name"></label>
     <input type="submit" name="" value="Login">
 </form>

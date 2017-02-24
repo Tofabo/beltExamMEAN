@@ -1,0 +1,27 @@
+<h3>{{  oneuser.name }}'s Bucket List</h3>
+
+<a href="#!/dash">Home</a>
+
+<div ng-if="oneuser._id == curUser._id">
+    <h4>Done</h4>
+<ul>
+    <li ng-repeat="item in oneuser.checkeditems"><input type="checkbox" ng-click="changestatus(item._id)" checked>{{ item.owner }}{{item.title}}{{item.description}} - {{item.createdAt | date:'medium'}}</li>
+</ul>
+
+<h4>Pending</h4>
+<ul>
+    <li ng-repeat="item in oneuser.uncheckeditems"><input type="checkbox" ng-click="changestatus(item._id)">{{ item.owner }}{{item.title}}{{item.description}} - {{item.createdAt | date:'medium'}}</li>
+</ul>
+</div>
+
+<div ng-if="oneuser._id != curUser._id">
+<h4>Done</h4>
+<ul>
+    <li ng-repeat="item in oneuser.checkeditems"> {{ item.owner }} {{item.title}} {{item.description}} - {{item.createdAt | date:'medium'}}</li>
+</ul>
+
+<h4>Pending</h4>
+<ul>
+    <li ng-repeat="item in oneuser.uncheckeditems">{{ item.owner }} {{item.title}}{{item.description}} - {{item.createdAt | date:'medium'}}</li>
+</ul>
+</div>

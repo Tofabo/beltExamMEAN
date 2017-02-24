@@ -8,7 +8,11 @@ app.config(function($routeProvider){
     })
     .when('/dash', {
         templateUrl: 'partials/dash.html',
-        controller: 'usersController', //probably gonig to change
+        controller: 'itemsController', 
+    })
+    .when('/user/:userid', {
+        templateUrl: 'partials/user.html',
+        controller: 'itemsController', 
     })
     .otherwise({
         redirectTo: '/login'

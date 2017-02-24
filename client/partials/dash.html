@@ -1,5 +1,27 @@
 <h1>Dash</h1>
+<a href="/logout">Logout</a>
+<h3>Welcome {{ curUser.name }}!</h3>
+<p><i>What do you want to do with your life?</i></p>
 
-<h3>Welcome {{ curUser.name }}!</h3><a href="/logout">Logout</a>
+<p ng-repeat="error in errors track by $index" class="red">{{ error }}</p>
 
+<form ng-submit="add(newItem, curUser)">
+    <label>Goal: <input type="text" ng-model="newItem.title"></label>
+    <label>Description: <textarea rows="5" cols="40" ng-model="newItem.description"></textarea></label>
+    <label>Make a friend do it too? <select ng-model="newItem.taggeduser">
+        <option ng-repeat="user in users" value="{{user._id}}">{{user.name}}</option>
+    </select></label>
+    <input type="submit" value="Submit!">
+</form>
 
+<h3>Before I Die</h3>
+<ul>
+    <li ng-repeat=" item in curUser.uncheckeditems"><input type="checkbox" ng-click="changestatus(item._id)"><b>{{item.title}}: </b> {{item.description}} - <i>{{ item.owner }} {{item.createdAt | date:'medium'}}</i></li>
+    <li ng-repeat=" item in curUser.checkeditems"><input type="checkbox" ng-click="changestatus(item._id)" checked><b>{{item.title}}: </b> {{item.description}} - <i>{{ item.owner }} {{item.createdAt | date:'medium'}}</i></li>
+</ul>
+
+<h3>List of Other Users</h3>
+<ul>
+    <li ng-repeat="user in users"><a href="#!/user/{{user._id}}">{{user.name}}</a></li>
+
+</ul>
